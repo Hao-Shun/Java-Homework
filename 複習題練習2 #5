@@ -1,0 +1,45 @@
+package prac;
+// 複習題練習2 #5 輸入兩個時間判斷時間差
+import java.util.Scanner;
+
+public class C2_03113041 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		String s1 = input.nextLine(); //以字串輸入
+		String s2 = input.nextLine();
+		
+		int h1 = (s1.charAt(0)-'0')*10 +(s1.charAt(1)-'0'); //找出小時、分、秒
+		int m1 =(s1.charAt(3)-'0')*10 +(s1.charAt(4)-'0');
+		int se1 = (s1.charAt(6)-'0')*10 +(s1.charAt(7)-'0');
+		
+		int sec1 = h1 *3600 + m1 *60 + se1; //算出全部秒數
+		
+		int h2 = (s2.charAt(0)-'0')*10 +(s2.charAt(1)-'0');
+		int m2 =(s2.charAt(3)-'0')*10 +(s2.charAt(4)-'0');
+		int se2 = (s2.charAt(6)-'0')*10 +(s2.charAt(7)-'0');
+		
+		int sec2 = h2 *3600 + m2 *60 + se2;
+		
+		int diff = 0;
+		if(s1.compareTo(s2) < 0){ //相減看差多少秒
+			diff = sec2 - sec1;
+		}else if(s1.compareTo(s2) > 0){
+			diff = sec1 - sec2;
+		}else{
+			diff = 0;
+		}
+		
+		int m = (diff % 3600)/60;
+		int s = (diff%3600)%60;
+		
+		
+		if(diff == 0){
+			System.out.println("00:00:00");
+		}else{ //把秒轉成時、分、秒後輸出
+			System.out.printf("%02d:%02d:%02d", diff/3600, m, s);
+			//System.out.println(diff/3600 + ":" + m + ":" + s);
+		}
+		
+		
+	}
+}
